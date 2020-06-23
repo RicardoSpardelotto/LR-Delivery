@@ -1,6 +1,10 @@
 package enums;
 
 public enum TiposLanches {
+	X_TUDO(19,"X Tudo"),
+	PASTEL(6,"Pastel"),
+	COXINHA(4,"Coxinha");
+	
 	
 	private double preço;
 	private String descricao;

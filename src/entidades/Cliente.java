@@ -18,6 +18,11 @@ public class Cliente extends Pessoa{
 
 	@Override
 	public String toString() {
-		return "cliente [nome=" + nome + ", telefone=" + telefone + ", endereco=" + endereco + "]";
+		return "Cliente [endereco=" + endereco + ", montante=" + montante + ", getNome()=" + getNome()
+				+ ", getTelefone()=" + getTelefone() + ", toString()=" + super.toString() + "]";
 	}
+
+	
+
+	
 }

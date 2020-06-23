@@ -1,5 +1,7 @@
 package cardapio;
 
+import java.util.Arrays;
+
 import enums.TiposBebidas;
 import enums.TiposLanches;
 import enums.TiposPizza;
@@ -28,6 +30,14 @@ public class Cardapio {
 	public void setLanches(TiposLanches[] lanches) {
 		this.lanches = lanches;
 	}
+	
+	@Override
+	public String toString() {
+		return "Cardapio [pizza=" + Arrays.toString(pizza) + ", bebidas=" + Arrays.toString(bebidas) + ", lanches="
+				+ Arrays.toString(lanches) + "]";
+	}
+	
+	
 	
 	
 	
