@@ -4,6 +4,9 @@ public class Cliente extends Pessoa{
 	private String endereco;
 	private double montante;
 	
+	public Cliente() {
+	}
+	
 	public Cliente(String nome, int telefone, String endereco) {
 		super(nome,telefone);
 		this.endereco = endereco;

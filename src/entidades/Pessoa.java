@@ -4,6 +4,9 @@ public class Pessoa {
 	private String nome;
 	private int telefone;
 	
+	public Pessoa(){
+	}
+	
 	public Pessoa(String nome, int telefone) {
 		this.nome = nome;
 		this.telefone = telefone;
@@ -24,7 +27,7 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [nome=" + nome + ", telefone=" + telefone + "]";
+		return nome;
 	}
 	
 }

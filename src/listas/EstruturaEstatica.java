@@ -1,4 +1,4 @@
-package Estatica;
+package listas;
 public abstract class EstruturaEstatica<T> {
 	
 	protected T[] elementos;

@@ -5,16 +5,16 @@ public enum TiposPizza {
 	MUSSARELA(25,"Pizza de Mussarela"),
 	FRANGOCOMCATUPIRY(27,"Pizza de Frango com Catupiry");
 	
-	private double preço;
+	private double preco;
 	private String descricao;
 	
 	private TiposPizza(double d, String descricao) {
-		this.preço = d;
+		this.preco = d;
 		this.descricao = descricao;
 	}
 
 	public double getPreço() {
-		return preço;
+		return preco;
 	}
 	public String getDescricao() {
 		return descricao;

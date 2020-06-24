@@ -10,6 +10,7 @@ public class Cardapio {
 	private TiposPizza[] pizza;
 	private TiposBebidas[] bebidas;
 	private TiposLanches[] lanches;
+	private double total;
 	
 	
 	public TiposPizza[] getPizza() {

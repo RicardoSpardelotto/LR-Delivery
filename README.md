@@ -1,2 +1,0 @@
-# LR-Delivery
-.

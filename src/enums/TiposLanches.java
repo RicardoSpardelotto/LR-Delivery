@@ -6,16 +6,16 @@ public enum TiposLanches {
 	COXINHA(4,"Coxinha");
 	
 	
-	private double preço;
+	private double preco;
 	private String descricao;
 	
 	private TiposLanches(double d, String descricao) {
-		this.preço = d;
+		this.preco = d;
 		this.descricao = descricao;
 	}
 
 	public double getPreço() {
-		return preço;
+		return preco;
 	}
 	public String getDescricao() {
 		return descricao;
