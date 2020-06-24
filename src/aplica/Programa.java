@@ -1,6 +1,7 @@
 package aplica;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import entidades.Cliente;
@@ -26,6 +27,15 @@ public class Programa {
 			System.out.println(entregador[cont]);
 		}
 	}
+	
+	public static Boolean ClienteDaCasa(String nome, ArrayList<Cliente> clientes) {
+
+		for(Cliente obj: clientes) {
+			if(nome.equals(obj.getNome())) 
+				return true;
+			}
+		return false;
+	}
 
 	public static void menuPrincipal(ArrayList<Cliente> clientes) {
 		Scanner ler = new Scanner(System.in);
@@ -36,10 +46,17 @@ public class Programa {
 			System.out.println("2 - Quero me cadastrar.");
 			System.out.println("3 - Sair");
 			op = ler.nextInt();
-		} while (op < 1 || op > 3);
+		
 		switch (op) {
 		case 1: {
-
+			System.out.println("Informe seu nome:");
+				ler.nextLine();	
+				String nome = ler.nextLine();
+				
+				if(ClienteDaCasa(nome, clientes) == true)
+					System.out.println("Cliente encontrado, faça seu pedido");			
+				else
+					System.out.println("Cliente não encontrado, por favor efetue um cadastro");
 		}
 			break;
 		case 2: {
@@ -61,6 +78,7 @@ public class Programa {
 			
 		}
 		}
+		} while (op > 1 || op < 3);
 		ler.close();
 	}
 
