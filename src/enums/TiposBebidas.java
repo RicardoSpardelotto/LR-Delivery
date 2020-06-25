@@ -1,16 +1,18 @@
 package enums;
 
 public enum TiposBebidas {
-	AGUA(2.5,"água"),
-	COCACOLA(6,"Coca Cola lata"),
-	TAUBAIANA(5,"Taubaiana lata");
+	AGUA(0,2.5,"água"),
+	COCACOLA(1,6,"Coca Cola lata"),
+	TAUBAIANA(2,5,"Taubaiana lata");
 	
+	private int codigo;
 	private double preco;
 	private String descricao;
 	
-	private TiposBebidas(double d, String descricao) {
+	private TiposBebidas(int codigo,double d, String descricao) {
 		this.preco = d;
 		this.descricao = descricao;
+		this.codigo = codigo;
 	}
 
 	public double getPreço() {
@@ -19,7 +21,9 @@ public enum TiposBebidas {
 	public String getDescricao() {
 		return descricao;
 	}
-	
-	
+
+	public int getCodigo() {
+		return codigo;
+	}	
 
 }

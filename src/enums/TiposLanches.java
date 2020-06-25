@@ -1,17 +1,18 @@
 package enums;
 
 public enum TiposLanches {
-	X_TUDO(19,"X Tudo"),
-	PASTEL(6,"Pastel"),
-	COXINHA(4,"Coxinha");
+	X_TUDO(0,19,"X Tudo"),
+	PASTEL(1,6,"Pastel"),
+	COXINHA(2,4,"Coxinha");
 	
-	
+	private int codigo;
 	private double preco;
 	private String descricao;
 	
-	private TiposLanches(double d, String descricao) {
+	private TiposLanches(int codigo,double d, String descricao) {
 		this.preco = d;
 		this.descricao = descricao;
+		this.codigo = codigo;
 	}
 
 	public double getPreço() {
@@ -19,6 +20,9 @@ public enum TiposLanches {
 	}
 	public String getDescricao() {
 		return descricao;
+	}
+	public int getCodigo() {
+		return codigo;
 	}
 
 }
