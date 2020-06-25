@@ -31,14 +31,15 @@ public class Programa {
 		}
 	}
 
-	public static Boolean ClienteDaCasa(String nome, ArrayList<Cliente> clientes) {
-
-		for (Cliente obj : clientes) {
-			if (nome.equals(obj.getNome().toLowerCase()))
-				System.out.println(obj);
-				return true;
+	public static int ClienteDaCasa(String nome, ArrayList<Cliente> clientes) {
+			
+		
+		for (int cont=0; cont<clientes.size();cont++) {
+			if(clientes.get(cont).getNome().contains(nome)) {
+				return cont;
+			}
 		}
-		return false;
+		return 100;
 	}
 
 	public static void menuPrincipal(ArrayList<Cliente> clientes) {
@@ -58,11 +59,8 @@ public class Programa {
 				ler.nextLine();
 				String nome = ler.nextLine();
 
-				if (ClienteDaCasa(nome.toLowerCase(), clientes) == true) {
-					System.out.println("Cliente encontrado, faça seu pedido");
-					realizaPedido(clientes);
-				} else
-					System.out.println("Cliente não encontrado, por favor efetue um cadastro");
+				System.out.println(ClienteDaCasa(nome, clientes));
+				
 			}
 				break;
 			case 2: {
@@ -84,7 +82,7 @@ public class Programa {
 
 			}
 			}
-		} while (op > 0 || op < 3);
+		} while (op > 0 && op < 3);
 		ler.close();
 	}
 
@@ -133,7 +131,6 @@ public class Programa {
 			}
 				break;
 			case 4:{
-				ler.close();
 				realizaPagamento(cardapio,clientes);
 			}
 			}
@@ -152,7 +149,6 @@ public class Programa {
 			char op;
 			System.out.println("Pedido vazio, deseja refazer o seu pedido?(S/N)");
 			op = ler.next().charAt(0);
-			ler.close();
 			if(op=='s'||op=='S'){
 				realizaPedido(clientes);
 			}else {
