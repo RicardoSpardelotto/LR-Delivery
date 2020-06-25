@@ -2,7 +2,7 @@ package entidades;
 
 public class Cliente extends Pessoa{
 	private String endereco;
-	private double montante;
+	private int vezesCompradas;
 	
 	public Cliente() {
 	}
@@ -17,12 +17,6 @@ public class Cliente extends Pessoa{
 	}
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
-	}
-
-	@Override
-	public String toString() {
-		return "Cliente [endereco=" + endereco + ", montante=" + montante + ", getNome()=" + getNome()
-				+ ", getTelefone()=" + getTelefone() + ", toString()=" + super.toString() + "]";
 	}
 
 	

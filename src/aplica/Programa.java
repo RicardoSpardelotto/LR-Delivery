@@ -15,11 +15,11 @@ import enums.TiposPizza;
 public class Programa {
 
 	public static void main(String[] args) {
-		ArrayList<Cliente> lista = new ArrayList<Cliente>();
+		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
-		realizaPedido();
+		realizaPedido(clientes);
 		entregadores();
-		menuPrincipal(lista);
+		menuPrincipal(clientes);
 
 	}
 
@@ -35,6 +35,7 @@ public class Programa {
 
 		for (Cliente obj : clientes) {
 			if (nome.equals(obj.getNome().toLowerCase()))
+				System.out.println(obj);
 				return true;
 		}
 		return false;
@@ -59,7 +60,7 @@ public class Programa {
 
 				if (ClienteDaCasa(nome.toLowerCase(), clientes) == true) {
 					System.out.println("Cliente encontrado, faça seu pedido");
-					realizaPedido();
+					realizaPedido(clientes);
 				} else
 					System.out.println("Cliente não encontrado, por favor efetue um cadastro");
 			}
@@ -87,7 +88,7 @@ public class Programa {
 		ler.close();
 	}
 
-	public static void realizaPedido() {
+	public static void realizaPedido(ArrayList<Cliente> clientes) {
 		Scanner ler = new Scanner(System.in);
 		Cardapio cardapio = new Cardapio();
 		int op;
@@ -105,15 +106,20 @@ public class Programa {
 					System.out.println(t.getCodigo() + " - " + t.getDescricao() + " R$" + t.getPreço());
 				}
 				op2 = ler.nextInt();
-				cardapio.aumentaQtd(0,op2);
+				System.out.println("Informe quantidade");
+				int quantidade = ler.nextInt();
+				cardapio.aumentaQtd(0,op2,quantidade);
 			}
 				break;
 			case 2: {
 				for (TiposBebidas t : TiposBebidas.values()) {
 					System.out.println(t.getCodigo() + " - " + t.getDescricao() + " R$" + t.getPreço());
+					
 				}
 				op2 = ler.nextInt();
-				cardapio.aumentaQtd(1,op2);
+				System.out.println("Informe quantidade");
+				int quantidade = ler.nextInt();
+				cardapio.aumentaQtd(1,op2,quantidade);
 			}
 				break;
 			case 3: {
@@ -121,14 +127,40 @@ public class Programa {
 					System.out.println(t.getCodigo() + " - " + t.getDescricao() + " R$" + t.getPreço());
 				}
 				op2 = ler.nextInt();
-				cardapio.aumentaQtd(2,op2);
+				System.out.println("Informe quantidade");
+				int quantidade = ler.nextInt();
+				cardapio.aumentaQtd(2,op2,quantidade);
 			}
 				break;
+			case 4:{
+				ler.close();
+				realizaPagamento(cardapio,clientes);
+			}
+			}
+		} while (op != 4);
+
+	}
+	
+	public static void realizaPagamento(Cardapio cardapio,ArrayList<Cliente> clientes) {
+		Scanner ler = new Scanner(System.in);
+		double subtotal = cardapio.calculaSubTotal();
+		if(subtotal>0) {
+			System.out.println("Confirme nome do cliente:");
+			String nome = ler.nextLine();
+			ClienteDaCasa(nome,clientes);
+		}else {
+			char op;
+			System.out.println("Pedido vazio, deseja refazer o seu pedido?(S/N)");
+			op = ler.next().charAt(0);
+			ler.close();
+			if(op=='s'||op=='S'){
+				realizaPedido(clientes);
+			}else {
+				return;
 			}
 			
-		} while (op != 4);
-		cardapio.mostraQtd();
-
+		}
+		
 	}
 
 }
