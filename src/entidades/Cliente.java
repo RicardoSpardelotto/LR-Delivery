@@ -12,11 +12,20 @@ public class Cliente extends Pessoa{
 		this.endereco = endereco;
 	}
 
+	
 	public String getEndereco() {
 		return endereco;
 	}
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public int getVezesCompradas() {
+		return vezesCompradas;
+	}
+
+	public void aumentaVezesCompradas() {
+		this.vezesCompradas++;
 	}
 
 	

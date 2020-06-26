@@ -20,8 +20,8 @@ public class Cardapio {
 		}
 	}
 
-	public void aumentaQtd(int x, int y,int z) {
-		this.qtd[x][y]=z;
+	public void aumentaQtd(int x, int y, int z) {
+		this.qtd[x][y] = z;
 	}
 
 	public double calculaSubTotal() {
@@ -30,12 +30,12 @@ public class Cardapio {
 			subtotal += qtd[0][cont] * t.getPreço();
 			cont++;
 		}
-		cont = 0; 
+		cont = 0;
 		for (TiposBebidas t : TiposBebidas.values()) {
 			subtotal += qtd[1][cont] * t.getPreço();
 			cont++;
 		}
-		cont=0;
+		cont = 0;
 		for (TiposLanches t : TiposLanches.values()) {
 			subtotal += qtd[2][cont] * t.getPreço();
 			cont++;

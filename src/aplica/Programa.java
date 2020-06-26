@@ -6,7 +6,7 @@ import java.util.Scanner;
 import cardapio.Cardapio;
 import entidades.Cliente;
 import entidades.Entregador;
-import entidades.Pessoa;
+
 import enums.EstadoEntregador;
 import enums.TiposBebidas;
 import enums.TiposLanches;
@@ -15,19 +15,20 @@ import enums.TiposPizza;
 public class Programa {
 
 	public static void main(String[] args) {
+		
+		Scanner ler = new Scanner(System.in);
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-		Pessoa[] entregador = new Pessoa[3];
-
-		realizaPedido(clientes);
+		Entregador[] entregador = new Entregador[3];
 		entregadores(entregador);
-		menuPrincipal(clientes);
+		menuPrincipal(clientes,entregador);
+		ler.close();
 
 	}
 
-	public static void entregadores(Pessoa[] entregador) {
+	public static void entregadores(Entregador[] entregador) {
 		for (int cont = 0; cont < entregador.length; cont++) {
-			entregador[cont] = new Entregador("entregador" + cont, cont, EstadoEntregador.DISPONIVEL);
-			System.out.println(entregador[cont]);
+			entregador[cont] = new Entregador("entregador " + cont, cont, EstadoEntregador.DISPONIVEL);
+			
 		}
 	}
 
@@ -42,14 +43,14 @@ public class Programa {
 		return -1;
 	}
 
-	public static void menuPrincipal(ArrayList<Cliente> clientes) {
+	public static void menuPrincipal(ArrayList<Cliente> clientes,Entregador[] entregador) {
 		Scanner ler = new Scanner(System.in);
 		int op = 0;
 		do {
 			System.out.println("LR-DELIVERY");
 			System.out.println("1 - Já é cadastrado.");
 			System.out.println("2 - Cadastrar.");
-			System.out.println("3 - Consultar entregadores.");
+			System.out.println("3 - Resetar entregadores.");
 			System.out.println("4 - Sair");
 			op = ler.nextInt();
 
@@ -79,14 +80,18 @@ public class Programa {
 
 				Cliente cliente = new Cliente(nome, telefone, endereco);
 				clientes.add(cliente);
-
+				realizaPedido(clientes,entregador);
+			}break;
+			case 3:{
+				entregadores(entregador);
 			}
+			case 4:System.out.println("Saindo..");
 			}
 		} while (op > 0 && op < 3);
 		ler.close();
 	}
 
-	public static void realizaPedido(ArrayList<Cliente> clientes,Pessoa[] entregador) {
+	public static void realizaPedido(ArrayList<Cliente> clientes,Entregador[] entregador) {
 		Scanner ler = new Scanner(System.in);
 		Cardapio cardapio = new Cardapio();
 		int op;
@@ -135,12 +140,13 @@ public class Programa {
 			}
 			}
 		} while (op != 4);
-
+		
 	}
 	
-	public static void realizaPagamento(Cardapio cardapio,ArrayList<Cliente> clientes,Pessoa[] entregador) {
+	public static void realizaPagamento(Cardapio cardapio,ArrayList<Cliente> clientes,Entregador[] entregador) {
 		Scanner ler = new Scanner(System.in);
 		double subtotal = cardapio.calculaSubTotal();
+		int opcao;
 		double desc=0;
 		int posi=-1;
 		if(subtotal>0) {
@@ -169,8 +175,8 @@ public class Programa {
 				System.out.print(cont+" ");
 				System.out.println(entregador[cont]);
 			}
-			int op = ler.nextInt();
-			entregador[op].setEstadoEntregador(EstadoEntregador.ENTREGANDO);
+			opcao = ler.nextInt();
+			entregador[opcao].setEstado(EstadoEntregador.ENTREGANDO);
 			for (int cont = 0; cont < entregador.length; cont++) {
 				System.out.print(cont+" ");
 				System.out.println(entregador[cont]);

@@ -1,5 +1,7 @@
 package entidades;
 
+import enums.EstadoEntregador;
+
 public class Pessoa {
 	private String nome;
 	private int telefone;
@@ -11,6 +13,8 @@ public class Pessoa {
 		this.nome = nome;
 		this.telefone = telefone;
 	}
+	
+	
 
 	public String getNome() {
 		return nome;
