@@ -6,12 +6,12 @@ package entidades;
  */
 public abstract class Pessoa {
 	private String nome;
-	private int telefone;
+	private double telefone;
 	
 	public Pessoa(){
 	}
 	
-	public Pessoa(String nome, int telefone) {
+	public Pessoa(String nome, double telefone) {
 		this.nome = nome;
 		this.telefone = telefone;
 	}
@@ -22,10 +22,10 @@ public abstract class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getTelefone() {
+	public double getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(double telefone) {
 		this.telefone = telefone;
 	}
 
