@@ -60,7 +60,8 @@ public class Programa {
 				ler.nextLine();
 				String nome = ler.nextLine();
 
-				System.out.println(ClienteDaCasa(nome, clientes));
+				if ((ClienteDaCasa(nome, clientes)) == -1)
+					System.out.println("Cliente não encontrado, realize um cadastro por favor");
 				
 			}
 				break;
