@@ -1,5 +1,9 @@
 package enums;
 
+/**
+ * Enum para guardar todos os pratos que se enquadram em lanches
+ *
+ */
 public enum TiposLanches {
 	X_TUDO(0,19,"X Tudo"),
 	PASTEL(1,6,"Pastel"),

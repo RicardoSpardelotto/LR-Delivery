@@ -1,6 +1,10 @@
 package entidades;
 
-public class Cliente extends Pessoa{
+/**
+ * Classe para aramzenar dados dos clientes conforme são cadastrados e posteriormentes inseridos em uma lista.
+ *
+ */
+public final class Cliente extends Pessoa{
 	private String endereco;
 	private int vezesCompradas;
 	

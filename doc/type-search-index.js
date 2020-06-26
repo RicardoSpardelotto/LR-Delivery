@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"cardapio","l":"Cardapio"},{"p":"entidades","l":"Cliente"},{"p":"entidades","l":"Entregador"},{"p":"enums","l":"EstadoEntregador"},{"p":"entidades","l":"Pessoa"},{"p":"aplica","l":"Programa"},{"p":"enums","l":"TiposBebidas"},{"p":"enums","l":"TiposLanches"},{"p":"enums","l":"TiposPizza"}]

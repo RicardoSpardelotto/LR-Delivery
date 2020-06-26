@@ -1,5 +1,9 @@
 package enums;
 
+/**
+ * Enum para guardar todos os pratos que se enquadram em pizza, a melhor comida do mundo.
+ *
+ */
 public enum TiposPizza {
 	CALABRESA(0,28,"Pizza de Calabresa"),
 	MUSSARELA(1,25,"Pizza de Mussarela"),

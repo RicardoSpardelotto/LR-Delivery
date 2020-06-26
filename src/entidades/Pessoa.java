@@ -1,8 +1,10 @@
 package entidades;
 
-import enums.EstadoEntregador;
-
-public class Pessoa {
+/**
+ * Superclasse que serve para cliente e entregador.
+ *
+ */
+public abstract class Pessoa {
 	private String nome;
 	private int telefone;
 	
@@ -13,8 +15,6 @@ public class Pessoa {
 		this.nome = nome;
 		this.telefone = telefone;
 	}
-	
-	
 
 	public String getNome() {
 		return nome;

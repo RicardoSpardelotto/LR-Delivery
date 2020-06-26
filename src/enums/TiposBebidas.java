@@ -1,5 +1,9 @@
 package enums;
 
+/**
+ * Enum para guardar todos os pratos que se enquadram em bebidas
+ *
+ */
 public enum TiposBebidas {
 	AGUA(0,2.5,"água"),
 	COCACOLA(1,6,"Coca Cola lata"),

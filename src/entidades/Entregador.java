@@ -2,7 +2,11 @@ package entidades;
 
 import enums.EstadoEntregador;
 
-public class Entregador extends Pessoa{
+/**
+ * Classe para armazenar entregadores
+ *
+ */
+public final class Entregador extends Pessoa{
 	private EstadoEntregador estado;
 
 	public Entregador(String nome, int telefone, EstadoEntregador estado) {
