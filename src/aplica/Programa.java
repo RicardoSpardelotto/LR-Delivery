@@ -16,15 +16,15 @@ public class Programa {
 
 	public static void main(String[] args) {
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+		Pessoa[] entregador = new Pessoa[3];
 
 		realizaPedido(clientes);
-		entregadores();
+		entregadores(entregador);
 		menuPrincipal(clientes);
 
 	}
 
-	public static void entregadores() {
-		Pessoa[] entregador = new Pessoa[3];
+	public static void entregadores(Pessoa[] entregador) {
 		for (int cont = 0; cont < entregador.length; cont++) {
 			entregador[cont] = new Entregador("entregador" + cont, cont, EstadoEntregador.DISPONIVEL);
 			System.out.println(entregador[cont]);
@@ -33,13 +33,13 @@ public class Programa {
 
 	public static int ClienteDaCasa(String nome, ArrayList<Cliente> clientes) {
 			
-		
+		nome = nome.toLowerCase();
 		for (int cont=0; cont<clientes.size();cont++) {
-			if(clientes.get(cont).getNome().contains(nome)) {
+			if(clientes.get(cont).getNome().toLowerCase().contains(nome)) {
 				return cont;
 			}
 		}
-		return 100;
+		return -1;
 	}
 
 	public static void menuPrincipal(ArrayList<Cliente> clientes) {
@@ -86,7 +86,7 @@ public class Programa {
 		ler.close();
 	}
 
-	public static void realizaPedido(ArrayList<Cliente> clientes) {
+	public static void realizaPedido(ArrayList<Cliente> clientes,Pessoa[] entregador) {
 		Scanner ler = new Scanner(System.in);
 		Cardapio cardapio = new Cardapio();
 		int op;
@@ -131,26 +131,62 @@ public class Programa {
 			}
 				break;
 			case 4:{
-				realizaPagamento(cardapio,clientes);
+				realizaPagamento(cardapio,clientes,entregador);
 			}
 			}
 		} while (op != 4);
 
 	}
 	
-	public static void realizaPagamento(Cardapio cardapio,ArrayList<Cliente> clientes) {
+	public static void realizaPagamento(Cardapio cardapio,ArrayList<Cliente> clientes,Pessoa[] entregador) {
 		Scanner ler = new Scanner(System.in);
 		double subtotal = cardapio.calculaSubTotal();
+		double desc=0;
+		int posi=-1;
 		if(subtotal>0) {
 			System.out.println("Confirme nome do cliente:");
 			String nome = ler.nextLine();
-			ClienteDaCasa(nome,clientes);
+			
+			do {
+			posi=ClienteDaCasa(nome,clientes);
+			if(posi==-1) {
+				System.out.println("Nome não encontrado, insira novamente:");
+			}
+			}while(posi==-1);
+			
+			if(clientes.get(posi).getVezesCompradas()<10) {
+				desc=0;
+			}if(clientes.get(posi).getVezesCompradas()<25) {
+				desc=0.05;
+			}if(clientes.get(posi).getVezesCompradas()<50) {
+				desc=0.10;
+			}else {
+				desc=0.15;
+			}
+			
+			System.out.println("Escolha um entregador de sua preferencia");
+			for (int cont = 0; cont < entregador.length; cont++) {
+				System.out.print(cont+" ");
+				System.out.println(entregador[cont]);
+			}
+			int op = ler.nextInt();
+			entregador[op].setEstadoEntregador(EstadoEntregador.ENTREGANDO);
+			for (int cont = 0; cont < entregador.length; cont++) {
+				System.out.print(cont+" ");
+				System.out.println(entregador[cont]);
+			}
+			
+			System.out.println("total a ser pago: "+(subtotal-(subtotal*desc)));
+			ler.nextLine();
+			clientes.get(posi).aumentaVezesCompradas();
+			System.out.println("Obrigado pela sua preferencia.:)");
+			
 		}else {
 			char op;
 			System.out.println("Pedido vazio, deseja refazer o seu pedido?(S/N)");
 			op = ler.next().charAt(0);
 			if(op=='s'||op=='S'){
-				realizaPedido(clientes);
+				realizaPedido(clientes,entregador);
 			}else {
 				return;
 			}
